@@ -1,4 +1,4 @@
-package com.roadconexion.helper;
+package com.roadconexion.ver1.helper;
 
 
 import org.apache.http.client.HttpClient;
@@ -37,7 +37,9 @@ public class RoadconexionHelper {
 	 * pull the server info
 	 */
 	
-	protected static synchronized String pullfromServer (String... params) throws ApiException
+	//protected static synchronized String downloadFromServer (String... params) 
+	protected static synchronized String downloadFromServer (String... params)
+	throws ApiException
 	
 	{
 		
