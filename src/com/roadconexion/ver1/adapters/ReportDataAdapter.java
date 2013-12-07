@@ -7,6 +7,8 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
@@ -25,7 +27,7 @@ import android.widget.TextView;
 import com.roadconexion.ver1.R;
 import com.roadconexion.ver1.data.ReportData;
 import com.roadconexion.ver1.MainActivity;
-import com.roadconexion.ver1.MainActivity.MyViewHolder;
+//import com.roadconexion.ver1.MainActivity.MyViewHolder;
 
 
 
@@ -34,7 +36,12 @@ public class ReportDataAdapter extends BaseAdapter
 //public class ReportDataAdapter extends Activity
 {
 	
-  ArrayList<ReportData> myReports = new ArrayList<ReportData>();
+  private static final String RoadName = null;
+private static final String ReportInfo = null;
+private static final String RoadType = null;
+private static final String CreatedDate = null;
+private static final String UserID = null;
+ArrayList<ReportData> myReports = new ArrayList<ReportData>();
   LayoutInflater inflater;
   Context context;
 
@@ -94,7 +101,7 @@ public class ReportDataAdapter extends BaseAdapter
           mViewHolder = (MyViewHolder) convertView.getTag();
       }
 
-        mViewHolder.tvRoadName = detail(convertView, R.id.tvRoadName, myReports.get(position).get(RoadName));
+        mViewHolder.tvRoadName = detail(convertView, R.id.tvroadName, myReports.get(position).get(RoadName));
         mViewHolder.tvReportInfo = detail(convertView, R.id.tvReportInfo, myReports.get(position).get(ReportInfo));
         mViewHolder.tvReportType = detail(convertView, R.id.tvReportType, myReports.get(position).get(RoadType));
         mViewHolder.tvCreatedDate = detail(convertView, R.id.tvCreatedDate, myReports.get(position).get(CreatedDate));
@@ -102,15 +109,27 @@ public class ReportDataAdapter extends BaseAdapter
         return convertView;
     }
 
-    private TextView (View v, int resId, String text) {
-        TextView tv = (TextView) view.findViewById(resId);
+    private Object detail(View convertView, int tvroadname, Object object) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	private TextView TextView (View v, int resId, String text) {
+        Activity view = null;
+		TextView tv = (TextView) view.findViewById(resId);
+    	//TextView tv = (TextView) ((View) context).findViewById(resId);
         tv.setText(text);
       return tv;
     }
 
     //public static class MyViewHolder {
     public class MyViewHolder {
-        TextView roadName, reportInfo, reportType, createdDate, userID;
+        public Object tvUserID;
+		public Object tvCreatedDate;
+		public Object tvReportType;
+		public Object tvReportInfo;
+		public Object tvRoadName;
+		TextView roadName, reportInfo, reportType, createdDate, userID;
 
     }
        

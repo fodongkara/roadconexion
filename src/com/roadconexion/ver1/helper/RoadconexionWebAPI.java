@@ -18,28 +18,20 @@ import android.util.Log;
 
 public class RoadconexionWebAPI extends AsyncTask<String, Integer, String>
 {
-	//private ProgressDialog progDialog;
+	
 	private Context context;
 	private MainActivity activity;
 	private static final String debugTag = "RoadconexionWebAPI";
+	private static final int String = 0;
 
-	/**
-	 * Construct a task
-	 * @param activity
-	 */
+	
     public RoadconexionWebAPI(MainActivity activity) {
 		super();
 		this.activity = activity;
 		this.context = this.activity.getApplicationContext();
 	}
 
-	@Override
-    protected void onPreExecute() {
-        super.onPreExecute(); 
-    	//progDialog = ProgressDialog.show(this.activity, "Search", this.context.getResources().getString(R.string.looking_for_reports) , true, false);
-    }
-
-    @Override
+	    @Override
     protected String doInBackground(String... params) {
         try {
         	Log.d(debugTag,"Background:" + Thread.currentThread().getName());
@@ -57,41 +49,24 @@ public class RoadconexionWebAPI extends AsyncTask<String, Integer, String>
     	//ArrayList<ReportData> reportdata = new ArrayList<ReportData>();
     	ArrayList<ReportData> myReports = new ArrayList<ReportData>();
     	
-    	//progDialog.dismiss();
-        //if (result.length() == 0) {
-        //    this.activity.alert ("Unable to find post");
-        //    return;
-        //}
+    	
         
         try {
-			JSONObject respObj = new JSONObject(result);
+			//JSONObject respObj = new JSONObject(result);
 			//JSONObject topReports = respObj.getJSONObject("reports");
-			JSONObject report = respObj.getJSONObject("reports");
-			JSONArray reports = topReports.getJSONArray("reports");
+			//JSONObject report = respObj.getJSONObject("reports");
+			//JSONArray reports = ((JSONArray)myReports).optJSONArray(String);
+			JSONArray reports = new JSONArray(result);
 			for(int i=0; i<reports.length(); i++) {
-				JSONObject report = reports.getJSONObject(i);	
+				//JSONObject myReport = reports.getJSONObject(i);
+				JSONObject report = reports.getJSONObject(i);
+				//JSONObject json_data = reports.getJSONObject(i);
 				String roadName = report.getString("road_name");
 				String reportInfo = report.getString("report_info");
 				String reportType = report.getString("type_report");
 				String createdDate = report.getString("created_on");
 				String userID = report.getString("user_id");
-				//JSONObject artistObj = track.getJSONObject("artist");
-				//String artistName = artistObj.getString("name");
-				//String artistUrl = artistObj.getString("url");
-				//String imageUrl;
-				//try {
-				//	JSONArray imageUrls = track.getJSONArray("image");
-				//	imageUrl = null;
-				//	for(int j=0; j<imageUrls.length(); j++) {
-				//		JSONObject imageObj = imageUrls.getJSONObject(j);
-				//		imageUrl = imageObj.getString("#text");
-				//		if(imageObj.getString("size").equals("medium")) {
-				//			break;
-				//		}
-				//	}
-				//} catch (Exception e) {
-				//	imageUrl = null;
-				//}
+				
 				
 				//reportdata.add(new ReportData(road_name,report,type_report, created_on, user));		
 				//reportdata.add(new ReportData(roadName, reportInfo, reportType, createdDate, userID));

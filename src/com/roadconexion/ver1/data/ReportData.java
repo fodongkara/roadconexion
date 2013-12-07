@@ -62,6 +62,11 @@ public class ReportData {
 		this.userID = userID;
 	}
 
+	public Object get(String roadname2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }
 
 

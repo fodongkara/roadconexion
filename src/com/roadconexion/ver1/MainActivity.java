@@ -67,7 +67,7 @@ public class MainActivity extends Activity {
     
    // public void setReports(ArrayList<ReportData> reports) {
    	public void setReports(ArrayList<ReportData> myReports) {
-		this.reports = reports;
+		this.myReports = myReports;
 		//this.reportList.setAdapter(new ReportDataAdapter(this,this.imgFetcher,this.layoutInflator, this.reports));
 		//this.reportList.setAdapter(new ReportDataAdapter(this,this.layoutInflator, this.reports));
 		
