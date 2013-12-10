@@ -9,6 +9,8 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
 import org.apache.http.HttpEntity;
+
+//import android.util.Log;
 //import org.apache.http.InputStream;
 import java.io.InputStream;
 import java.io.ByteArrayOutputStream;
@@ -59,12 +61,12 @@ public class RoadconexionHelper {
 		//		"http://www.roadconexion.com/user");
 
 		//the get
-		HttpGet request = new HttpGet(url);
+		HttpGet getRequest = new HttpGet(url);
 
 
 		// Making HTTP Request
 		try {
-			HttpResponse response = httpClient.execute(request);
+			HttpResponse response = httpClient.execute(getRequest);
 			StatusLine status = response.getStatusLine();
 			if (status.getStatusCode() != HTTP_STATUS_OK){
 				//handle status exception
@@ -83,6 +85,8 @@ public class RoadconexionHelper {
 			}
 			retval = new String (content.toByteArray());
 
+
+			//Log.i("myJSondata", retval); 
 
 
 			//Log.d("Http Response:", response.toString());

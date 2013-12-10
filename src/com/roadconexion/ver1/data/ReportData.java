@@ -7,11 +7,7 @@ public class ReportData {
 	private String createdDate;
 	private String userID;
 
-	//road_name = models.TextField(max_length=1000, blank=False)
-    //report= models.TextField(blank=False)
-    //type_report=models.CharField(max_length=1000,choices=TYPE_CHOICES,blank=False)
-    //created_on = models.DateTimeField(auto_now_add=True)
-    //user = models.ForeignKey(User)
+	
 
     public ReportData(String roadName, String reportInfo, String reportType, String createdDate, String userID) {
 		super();
@@ -20,6 +16,10 @@ public class ReportData {
 		this.reportType = reportType;
 		this.createdDate = createdDate;
 		this.userID = userID;
+	}
+
+	public ReportData() {
+		// TODO Auto-generated constructor stub
 	}
 
 	public String getRoadName() {
@@ -63,6 +63,11 @@ public class ReportData {
 	}
 
 	public Object get(String roadname2) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public String getReportType() {
 		// TODO Auto-generated method stub
 		return null;
 	}

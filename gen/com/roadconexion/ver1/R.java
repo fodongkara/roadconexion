@@ -29,8 +29,8 @@ public final class R {
         public static final int tvCreatedDate=0x7f080004;
         public static final int tvReportInfo=0x7f080002;
         public static final int tvReportType=0x7f080003;
+        public static final int tvRoadName=0x7f080001;
         public static final int tvUserID=0x7f080005;
-        public static final int tvroadName=0x7f080001;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
