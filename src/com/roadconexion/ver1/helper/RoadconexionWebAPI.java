@@ -9,7 +9,6 @@ import org.json.JSONObject;
 //import com.roadconexion.ver1.R;
 import com.roadconexion.ver1.MainActivity;
 import com.roadconexion.ver1.data.ReportData;
-import com.roadconexion.ver1.helper.RoadconexionHelper;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -74,8 +73,9 @@ public class RoadconexionWebAPI extends AsyncTask<String, Integer, String>
 			//JSONObject json = new JSONObject(result);
         	
 			//JSONObject data = json.getJSONObject("reports");
-			
-			JSONArray reports = new JSONArray(result);
+        	reports = json.getJSONArray(result);
+        
+			//JSONArray reports = new JSONArray(result);
 			for(int i=0; i<reports.length(); i++) {
 			//for(int i=0; i<5; i++) {
 				//JSONObject myReport = reports.getJSONObject(i);

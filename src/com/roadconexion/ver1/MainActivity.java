@@ -1,124 +1,107 @@
 package com.roadconexion.ver1;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-import android.app.Activity;
-//import android.app.ProgressDialog;
-import android.content.Context;
-//import android.os.AsyncTask;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import android.app.ListActivity;
+import android.content.Intent;
 import android.os.Bundle;
-//import android.widget.ListAdapter;
-//import android.view.LayoutInflater;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
-import com.roadconexion.ver1.adapters.ReportDataAdapter;
-import com.roadconexion.ver1.data.ReportData;
-import com.roadconexion.ver1.helper.RoadconexionWebAPI;
+public class MainActivity extends ListActivity {
 
-//import com.roadconexion.ver1.R;
-
-public class MainActivity extends Activity {
+	// url to make request
+	private static String url = "http://www.roadconexion.com/reports/.json";
 	
-	//RoadconexionWebAPI = new RoadconexionWebAPI();
-	// private static final ListAdapter ReportDataAdapter = null;
-	// private static final String[] ReportData = {"Dan"};
-	ListView reportList;
-	//Context context = MainActivity.this;
-	Context context;
-	//public void setReports(ArrayList<ReportData> myReports, Object object) {
-	//public void setReports(ArrayList<ReportData> reportdata) {
-		// TODO Auto-generated method stub
-		
-	//}
-	//setReports(ArrayList<ReportData> myReports2, Object object)
-
-	//ArrayList<ReportData> myReports = new ArrayList<ReportData>();
-	ArrayList<ReportData> reportdata = new ArrayList<ReportData>();
+	// JSON Node names
+	private static final String TAG_REPORTS = "reports";
+	private static final String TAG_USERID = "user";
+	private static final String TAG_ROADNAME = "road_name";
+	private static final String TAG_REPORT = "report";
+	private static final String TAG_REPORTTYPE = "type_report";
+	private static final String TAG_DATE = "created_on";
 	
-	// private LayoutInflater layoutInflator;
-	//for testing
-	/*String[] roadName = new String[] { "Kira Road", "Kampala Road" };
-	String[] reportType = new String[] { "Road Status", "Traffic Jam" };
-	String[] reportInfo = new String[] {
-			"There is alot of jam next to the police",
-			"Kampala Road is flooded, causing alot of jam" };
-	String[] createdDate = new String[] { "11-11-2013", "11-11-2013" };
-	String[] userID = new String[] { "1", "37" };
-*/
+	// reports JSONArray
+	JSONArray reports = null;
+
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// context = this;
 		setContentView(R.layout.activity_main);
-		context = this;
-
-		// this.inMgr = (InputMethodManager)
-		// getSystemService(Context.INPUT_METHOD_SERVICE);
-
-		reportList = (ListView) findViewById(R.id.report_list);
-		// ReportDataAdapter ad= new ReportDataAdapter(myReports, this,
-		// layoutInflator);
-		//ReportDataAdapter ad = new ReportDataAdapter(context, myReports);
-		ReportDataAdapter ad = new ReportDataAdapter(context, reportdata);
-		// ReportDataAdapter ad = new ReportDataAdapter(myR)
-		reportList.setAdapter(ad);
-		//for testing
-		//getDataInList();
 		
-		
-		//ReportDataTask loaderTask = new ReportDataTask();
-		
-		
-		//test
-		//RoadconexionWebAPI loaderTask = new RoadconexionWebAPI(MainActivity.this);
-		
-		//loaderTask.execute();
-		
-		
-		// oh God!!!!!
-		// setReports(rmyeports);
+		// Hashmap for ListView
+		ArrayList<HashMap<String, String>> reportList = new ArrayList<HashMap<String, String>>();
 
-		// reportList.setAdapter(new ReportDataAdapter(context, myReports));
+		// Creating JSON Parser instance
+		JSONParser jParser = new JSONParser();
 
-	}
+		// getting JSON string from URL
+		JSONObject json = jParser.getJSONFromUrl(url);
 
-	//public void setReports(ArrayList<ReportData> myReports2)
-	//public void setReports(ArrayList<ReportData> myReports2)
-	public void setReports(ArrayList<ReportData> reportdata) {
-		// TODO Auto-generated method stub
-		
-	}
+		try {
+			// Getting Array of Reports
+			reports = json.getJSONArray(TAG_REPORTS);
+			
+			// looping through All Contacts
+			for(int i = 0; i < reports.length(); i++){
+				JSONObject c = reports.getJSONObject(i);
+				
+				// Storing each json item in variable
+				String user = c.getString(TAG_USERID);
+				String road_name = c.getString(TAG_ROADNAME);
+				String report = c.getString(TAG_REPORT);
+				
+				String type_report = c.getString(TAG_REPORTTYPE);
+				String created_on = c.getString(TAG_DATE);
+				
+				
+				
+				// creating new HashMap
+				HashMap<String, String> map = new HashMap<String, String>();
+				
+				// adding each child node to HashMap key => value
+				map.put(TAG_USERID, user);
+				map.put(TAG_ROADNAME, road_name);
+				map.put(TAG_REPORT, report);
+				map.put(TAG_REPORTTYPE, type_report);
+				map.put(TAG_DATE, created_on);
 
-	
-
-}
-
-	
-	/*
-	public void getDataInList() {
-		for (int i = 0; i < 2; i++) {
-			ReportData ld = new ReportData();
-			ld.setRoadName(roadName[i]);
-			ld.setReportType(reportType[i]);
-			ld.setReportInfo(reportInfo[i]);
-			ld.setCreatedDate(createdDate[i]);
-			ld.setUserID(userID[i]);
-
-			myReports.add(ld);
+				// adding HashList to ArrayList
+				reportList.add(map);
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
 		}
+		
+		
+		/**
+		 * Updating parsed JSON data into ListView
+		 * */
+		ListAdapter adapter = new SimpleAdapter(this, reportList,
+				R.layout.list_item,
+				new String[] { TAG_USERID, TAG_ROADNAME, TAG_REPORT, TAG_REPORTTYPE, TAG_DATE }, new int[] {
+						R.id.created_on, R.id.road_name, R.id.report, R.id.type_report, R.id.created_on });
+
+		setListAdapter(adapter);
+
+		// selecting single ListView item
+		ListView lv = getListView();
+
+		
+		
+		
+
 	}
 
-	public void setReports(ArrayList<ReportData> myReports2, Object object) {
-		// TODO Auto-generated method stub
-
-	};
-
-	// }
-
-	
-
 }
-
-/**
- * Started from the bottom now we're here
- **/
