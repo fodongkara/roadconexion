@@ -33,7 +33,7 @@ public final class R {
         public static final int created_date=0x7f080008;
         public static final int report_desc=0x7f080006;
         public static final int report_type=0x7f080009;
-        public static final int road_name=0x7f080005;
+        public static final int road_names=0x7f080005;
         public static final int user_id=0x7f080007;
     }
     public static final class layout {
@@ -59,17 +59,6 @@ public final class R {
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
         
-
-        Base application theme for API 11+. This theme completely replaces
-        AppBaseTheme from res/values/styles.xml on API 11+ devices.
-    
- API 11 theme customizations can go here. 
-
-        Base application theme for API 14+. This theme completely replaces
-        AppBaseTheme from BOTH res/values/styles.xml and
-        res/values-v11/styles.xml on API 14+ devices.
-    
- API 14 theme customizations can go here. 
          */
         public static final int AppBaseTheme=0x7f060000;
         /**  Application theme. 
