@@ -4,27 +4,27 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <TextView android:id="@+id/tvRoadName"
+    <TextView android:id="@+id/RoadName"
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content">
         	</TextView>
         	
-    <TextView android:id="@+id/tvReportInfo"
+    <TextView android:id="@+id/ReportInfo"
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content">
         	</TextView>
         	
-	<TextView android:id="@+id/tvReportType"
+	<TextView android:id="@+id/ReportType"
 	    	android:layout_width="wrap_content"
 	    	android:layout_height="wrap_content">
 	    	</TextView>
 	  
-	<TextView android:id="@+id/tvCreatedDate"
+	<TextView android:id="@+id/CreatedDate"
 	    	android:layout_width="wrap_content"
 	    	android:layout_height="wrap_content">
 	    	</TextView>	
 	    	
-	<TextView android:id="@+id/tvUserID"
+	<TextView android:id="@+id/UserID"
 	    	android:layout_width="wrap_content"
 	    	android:layout_height="wrap_content">
 	    	</TextView>
