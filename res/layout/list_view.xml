@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:padding="5dp"
+    android:paddingTop="5dp"
     android:background="#ffffff"
     android:orientation="vertical" >
     
@@ -10,7 +10,8 @@
         	android:layout_width="wrap_content"
         	android:textSize="12sp"
         	android:textStyle="bold"
-        	android:layout_height="wrap_content">
+        	android:layout_height="wrap_content"
+        	android:background="#F3F3F3">
         	</TextView>
         	
     <TextView android:id="@+id/ReportInfo"
@@ -28,11 +29,13 @@
 	<TextView android:id="@+id/CreatedDate"
 	    	android:textSize="12sp"
 	    	android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content">
+	    	android:layout_height="wrap_content"
+	    	>
 	    	</TextView>	
 	    	
 	<TextView android:id="@+id/UserID"
 	    	android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content">
+	    	android:layout_height="wrap_content"
+	    	android:textColor="#2A00FF">
 	    	</TextView>
 </LinearLayout>
