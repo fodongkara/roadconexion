@@ -153,7 +153,7 @@ public class MainActivity extends ListActivity {
 
 				result = convertInputStreamToString(inputStream);
 			else
-				result = "Did not work!";
+				result = "Failed!";
 
 		} catch (Exception e) {
 			Log.d("InputStream", e.getLocalizedMessage());
