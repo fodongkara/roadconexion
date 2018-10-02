@@ -61,9 +61,9 @@ public class FragmentUpdates extends SherlockListFragment {
 		long months = diffInSeconds / 2592000;
 
 		if (seconds < 120) {
-		    elapsed = "a min ago";
+		    elapsed = "a minute ago";
 		} else if (mins < 60) {
-		    elapsed = mins + " mins ago";
+		    elapsed = mins + " minutes ago";
 		} else if (hours < 24) {
 		    elapsed = hours + " " + (hours > 1 ? "hrs" : "hr")+ " ago";
 		} else if (hours < 48) {
