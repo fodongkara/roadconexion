@@ -67,7 +67,7 @@ public class FragmentUpdates extends SherlockListFragment {
 		} else if (hours < 24) {
 		    elapsed = hours + " " + (hours > 1 ? "hrs" : "hr")+ " ago";
 		} else if (hours < 48) {
-		    elapsed = "a day ago";
+		    elapsed = "one day ago";
 		} else if (days < 7) {
 		    elapsed = days + " days ago";
 		} else if (weeks < 5) {
